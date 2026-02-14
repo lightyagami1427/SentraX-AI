@@ -132,13 +132,20 @@ export default function LandingPage() {
 
                     <div className="container px-4 md:px-6 mx-auto flex flex-col items-center text-center z-10 relative">
                         <motion.div
-                            initial={{ opacity: 0, y: -20 }}
-                            animate={{ opacity: 1, y: 0 }}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 1, ease: [0.23, 1, 0.32, 1] }}
                         >
-                            <Badge variant="outline" className="mb-8 px-6 py-2 text-xs uppercase tracking-[0.3em] font-mono border-primary/20 bg-primary/5 text-primary/90 backdrop-blur-2xl shimmer-border border-white/5">
-                                <Sparkles size={12} className="mr-3 animate-pulse text-primary" />
-                                Neural Signal Intelligence v2.0
+                            <Badge variant="outline" className="mb-8 px-6 py-2.5 text-[10px] md:text-xs uppercase tracking-[0.5em] font-mono border-primary/30 bg-primary/[0.08] text-primary backdrop-blur-3xl shimmer-border relative overflow-hidden group">
+                                <motion.div
+                                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -z-0"
+                                    animate={{ x: ['-100%', '100%'] }}
+                                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                                />
+                                <span className="relative z-10 flex items-center drop-shadow-[0_0_8px_rgba(59,130,246,0.5)] text-shine font-bold">
+                                    <Sparkles size={14} className="mr-3 text-primary animate-pulse" />
+                                    Neural Signal Intelligence
+                                </span>
                             </Badge>
                         </motion.div>
 
