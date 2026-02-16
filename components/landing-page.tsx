@@ -17,6 +17,8 @@ import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { TerminalView, TerminalLine, TerminalOutput } from "@/components/ui/terminal-view"
 import { StatsCard } from "@/components/ui/stats-card"
+import { HeroGlow } from "@/components/ui/hero-glow"
+// import { Spotlight } from "@/components/ui/spotlight"
 
 // Redefined FeatureCard component
 interface FeatureCardProps {
@@ -47,7 +49,7 @@ function FeatureCard({ title, description, icon, className, children, delay = 0,
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: delay }}
             onMouseMove={onMouseMove}
-            className={`group relative overflow-hidden rounded-[2.5rem] border border-white/5 bg-card p-10 transition-all hover:border-primary/20 ${className} scroll-mt-24`}
+            className={`group relative overflow-hidden rounded-xl border border-white/5 bg-card/50 p-8 transition-all hover:border-primary/50 ${className} scroll-mt-24`}
         >
             <motion.div
                 className="pointer-events-none absolute -inset-px rounded-[2.5rem] opacity-0 transition duration-300 group-hover:opacity-100"
@@ -109,26 +111,8 @@ export default function LandingPage() {
                 {/* Hero Section */}
                 <section className="relative w-full pt-32 pb-24 md:pt-48 md:pb-32 flex justify-center overflow-hidden">
                     {/* Premium Designer Background System */}
-                    <div className="absolute inset-0 pointer-events-none -z-10">
-                        <div className="absolute inset-0 grid-pattern opacity-20" />
-                        <motion.div
-                            className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/20 mesh-orb"
-                            animate={{
-                                x: [0, 50, 0],
-                                y: [0, 30, 0],
-                            }}
-                            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                        />
-                        <motion.div
-                            className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-blue-600/10 mesh-orb"
-                            animate={{
-                                x: [0, -40, 0],
-                                y: [0, -60, 0],
-                            }}
-                            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                        />
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,var(--background)_90%)]" />
-                    </div>
+                    {/* Hero Glow Background (Neon.com replica) */}
+                    <HeroGlow />
 
                     <div className="container px-4 md:px-6 mx-auto flex flex-col items-center text-center z-10 relative">
                         <motion.div
@@ -136,35 +120,20 @@ export default function LandingPage() {
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 1, ease: [0.23, 1, 0.32, 1] }}
                         >
-                            <Badge variant="outline" className="mb-8 px-6 py-2.5 text-[10px] md:text-xs uppercase tracking-[0.5em] font-mono border-primary/30 bg-primary/[0.08] text-primary backdrop-blur-3xl shimmer-border relative overflow-hidden group">
-                                <motion.div
-                                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -z-0"
-                                    animate={{ x: ['-100%', '100%'] }}
-                                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                                />
-                                <span className="relative z-10 flex items-center drop-shadow-[0_0_8px_rgba(59,130,246,0.5)] text-shine font-bold">
-                                    <Sparkles size={14} className="mr-3 text-primary animate-pulse" />
+                            <Badge variant="outline" className="mb-8 px-4 py-1.5 text-[11px] uppercase tracking-[0.2em] font-mono border-primary/20 bg-primary/5 text-primary rounded-full backdrop-blur-sm">
+                                <span className="flex items-center gap-2">
+                                    <span className="relative flex h-2 w-2">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                                    </span>
                                     Neural Signal Intelligence
                                 </span>
                             </Badge>
                         </motion.div>
 
-                        <h1 className="text-4xl md:text-7xl lg:text-[80px] font-extrabold tracking-tightest max-w-5xl leading-[0.85] mb-4 overflow-hidden text-shine py-4 text-bloom">
-                            {["Trade", "with", "the", "clarity", "of", "AI."].map((word, i) => (
-                                <motion.span
-                                    key={i}
-                                    className="inline-block mr-[0.2em] whitespace-nowrap"
-                                    initial={{ opacity: 0, y: 80 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{
-                                        duration: 1.2,
-                                        delay: i * 0.08,
-                                        ease: [0.23, 1, 0.32, 1]
-                                    }}
-                                >
-                                    {word}
-                                </motion.span>
-                            ))}
+
+                        <h1 className="text-5xl md:text-8xl lg:text-[90px] font-bold tracking-tighter max-w-6xl leading-[0.9] mb-6 text-foreground">
+                            <span className="text-shine">Trade with the clarity of AI.</span>
                         </h1>
 
                         <motion.p
@@ -182,13 +151,15 @@ export default function LandingPage() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1.2, delay: 1, ease: [0.23, 1, 0.32, 1] }}
                         >
-                            <Button size="lg" className="h-16 px-12 text-lg rounded-full bg-primary hover:bg-primary/90 text-white shadow-[0_0_40px_rgba(59,130,246,0.3)] transition-all ease-premium hover:scale-105 active:scale-95 shimmer-border overflow-hidden relative group" asChild>
+                            <Button size="lg" className="h-14 px-8 text-base font-semibold rounded-full bg-primary hover:bg-primary/90 text-black shadow-[0_0_20px_rgba(0,230,153,0.4)] transition-all hover:scale-105 active:scale-95" asChild>
                                 <Link href="https://t.me/sentrax_ai_bot" target="_blank">
-                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-[shimmer_2s_infinite] pointer-events-none" />
-                                    <Zap className="mr-3 h-5 w-5 fill-current" />
+                                    <Zap className="mr-2 h-4 w-4 fill-current" />
                                     Launch SentraX Bot
                                 </Link>
                             </Button>
+                            <p className="text-xs font-mono text-primary/80 tracking-widest uppercase mt-4 sm:mt-0 sm:absolute sm:-bottom-12">
+                                <span className="animate-pulse">●</span> First 100 Users: Free 1 Month Access
+                            </p>
                             <Button size="lg" variant="ghost" className="h-16 px-12 text-lg rounded-full border border-white/5 hover:bg-white/5 transition-all backdrop-blur-md ease-premium" asChild>
                                 <Link href="#features">
                                     Explore Ecosystem
@@ -198,81 +169,15 @@ export default function LandingPage() {
                     </div>
                 </section>
 
-                {/* Philosophy Section */}
-                <section className="w-full py-24 border-y border-white/5 bg-black/40 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--color-primary)_0%,transparent_70%)] opacity-[0.03] pointer-events-none" />
-                    <div className="container px-4 md:px-6 mx-auto relative z-10">
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-                            <motion.div
-                                className="space-y-10 text-left"
-                                initial={{ opacity: 0, x: -50 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.8 }}
-                            >
-                                <div className="space-y-6">
-                                    <Badge variant="outline" className="border-primary/20 text-primary/80 uppercase tracking-widest font-mono">Foundations</Badge>
-                                    <h2 className="text-4xl md:text-5xl font-bold tracking-tight">The Clarity <br /> of Signal.</h2>
-                                    <p className="text-muted-foreground/80 text-lg leading-relaxed font-light max-w-lg">
-                                        SentraX-AI is an intelligence engine designed to provide institutional-grade insights to the individual trader. We analyze, you decide.
-                                    </p>
-                                </div>
 
-                                <div className="grid gap-6">
-                                    <div className="group flex items-center gap-6 p-8 rounded-3xl bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.04] transition-all hover:border-primary/20">
-                                        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-green-500/10 text-green-500 border border-green-500/20 shadow-[0_0_15px_rgba(34,197,94,0.1)]">
-                                            <Check size={24} />
-                                        </div>
-                                        <div>
-                                            <h4 className="text-xl font-semibold">Actionable Intelligence</h4>
-                                            <p className="text-muted-foreground/70">Detailed signals with specific risk metrics.</p>
-                                        </div>
-                                    </div>
-                                    <div className="group flex items-center gap-6 p-8 rounded-3xl bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.04] transition-all hover:border-red-500/20">
-                                        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-red-500/10 text-red-500 border border-red-500/20 shadow-[0_0_15px_rgba(239,68,68,0.1)]">
-                                            <X size={24} />
-                                        </div>
-                                        <div>
-                                            <h4 className="text-xl font-semibold">Zero Execution Risk</h4>
-                                            <p className="text-muted-foreground/70">Safety by design. We never hold funds.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </motion.div>
-
-                            <motion.div
-                                className="relative lg:pl-10"
-                                initial={{ opacity: 0, scale: 0.9, rotateY: 10 }}
-                                whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                            >
-                                <div className="absolute inset-0 bg-primary/20 blur-[120px] rounded-full -z-10" />
-                                <TerminalView title="Neural Signal Processor" className="w-full shadow-[0_45px_100px_-20px_rgba(0,0,0,0.8)] border-white/10" showLineNumbers>
-                                    <TerminalLine prefix="[SYS]">SentraX Intelligence Engine Init...</TerminalLine>
-                                    <TerminalLine prefix="[AI]">Optimizing 17 neural features...</TerminalLine>
-                                    <TerminalLine prefix="[DB]">Regime: Bullish Accumulation...</TerminalLine>
-                                    <TerminalLine prefix="[✓]" className="text-primary animate-pulse">SIGNAL DETECTED: BTC/USDT</TerminalLine>
-                                    <TerminalOutput>
-                                        {`✦ TYPE:         LONG (SPOT/PERP)
-✦ CONFIDENCE:   94.2%
-✦ TARGET 1:     $108,500
-✦ STOP LOSS:     $97,400
-✦ VALIDITY:     4H / 1D`}
-                                    </TerminalOutput>
-                                </TerminalView>
-                            </motion.div>
-                        </div>
-                    </div>
-                </section >
 
                 {/* Features Grid ("Bento") */}
-                < section id="features" className="w-full py-24 bg-background relative overflow-hidden" >
+
+                <section id="features" className="w-full py-24 bg-background relative overflow-hidden">
                     <div className="container px-4 md:px-6 mx-auto relative z-10">
                         <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
                             <div className="max-w-2xl text-left">
-                                <Badge variant="outline" className="mb-6 border-primary/30 text-primary uppercase tracking-widest font-mono">Ecosystem</Badge>
-                                <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">The Standard <br /> for Data.</h2>
+                                <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4">The Standard <br /> for Data.</h2>
                             </div>
                             <p className="text-muted-foreground text-lg max-w-sm font-light tracking-wide">
                                 Institutional tools democratized for the next generation of digital asset traders.
@@ -390,10 +295,11 @@ export default function LandingPage() {
                             </FeatureCard>
                         </div>
                     </div>
-                </section >
+                </section>
 
                 {/* Performance Roadmap */}
-                < section id="roadmap" className="w-full py-24 bg-black/40 border-t border-white/5 relative" >
+
+                <section id="roadmap" className="w-full py-24 bg-black/40 border-t border-white/5 relative">
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
                     <div className="container px-4 md:px-6 mx-auto">
                         <div className="flex flex-col items-center text-center mb-16">
@@ -410,35 +316,35 @@ export default function LandingPage() {
                             <div className="space-y-12">
                                 {[
                                     {
-                                        phase: "Phase 01",
-                                        title: "Liquidity Aggregation Web",
-                                        status: "Live Beta",
-                                        description: "Cross-chain DEX liquidity aggregation with MEV protection and slippage optimization.",
-                                        metrics: ["0.2ms Sync Latency", "99.2% Node Uptime"],
-                                        color: "text-green-500"
-                                    },
-                                    {
-                                        phase: "Phase 02",
-                                        title: "Whale Intelligence v2",
-                                        status: "Under Development",
-                                        description: "Bespoke cluster analysis for shadow-tracking high-net-worth wallet movements in realtime.",
-                                        metrics: ["94.7% Signal Accuracy", "Shadow Mapping v4"],
+                                        phase: "01",
+                                        title: "Liquidity Aggregation",
+                                        status: "Live",
+                                        description: "Cross-chain DEX liquidity aggregation with MEV protection.",
+                                        metrics: ["0.2ms Latency", "99.9% Uptime"],
                                         color: "text-primary"
                                     },
                                     {
-                                        phase: "Phase 03",
-                                        title: "SentraX Prime SDK",
-                                        status: "Strategic Q3 2026",
-                                        description: "Institutional-grade API for high-frequency data streams and automated market reporting.",
-                                        metrics: ["1M+ Signals/Sec", "Zero-Trust Auth"],
-                                        color: "text-blue-400"
+                                        phase: "02",
+                                        title: "Whale Intelligence",
+                                        status: "Dev",
+                                        description: "Shadow-tracking high-net-worth wallet movements in realtime.",
+                                        metrics: ["94.7% Accuracy", "Shadow Mapping"],
+                                        color: "text-muted-foreground"
                                     },
                                     {
-                                        phase: "Phase 04",
+                                        phase: "03",
+                                        title: "SentraX Prime SDK",
+                                        status: "Q3 2026",
+                                        description: "Institutional-grade API for high-frequency data streams.",
+                                        metrics: ["1M+ Signals/Sec", "Zero-Trust"],
+                                        color: "text-muted-foreground"
+                                    },
+                                    {
+                                        phase: "04",
                                         title: "Neural Architectures",
-                                        status: "Strategic Horizon",
-                                        description: "User-trained inference models for custom market regime detection and alpha discovery.",
-                                        metrics: ["Unlimited Scale", "Proprietary Models"],
+                                        status: "Future",
+                                        description: "User-trained inference models for custom market regime detection.",
+                                        metrics: ["Unlimited Scale", "Custom Models"],
                                         color: "text-muted-foreground"
                                     }
                                 ].map((item, i) => (
@@ -455,7 +361,7 @@ export default function LandingPage() {
 
                                         {/* Content Card */}
                                         <div className="w-full md:w-[45%] group">
-                                            <div className="p-8 md:p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/5 hover:border-primary/20 transition-all hover:bg-white/[0.04] relative overflow-hidden backdrop-blur-3xl group">
+                                            <div className="p-8 md:p-8 rounded-xl bg-white/[0.02] border border-white/5 hover:border-primary/50 transition-all hover:bg-white/[0.04] relative overflow-hidden backdrop-blur-sm group">
                                                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
 
                                                 <div className="flex items-center justify-between mb-6">
@@ -485,10 +391,11 @@ export default function LandingPage() {
                             </div>
                         </div>
                     </div>
-                </section >
+                </section>
 
                 {/* CTA Section */}
-                < section className="w-full py-32 relative overflow-hidden flex justify-center" >
+
+                <section className="w-full py-32 relative overflow-hidden flex justify-center">
                     <div className="container px-4 md:px-6 mx-auto text-center relative z-10">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
@@ -510,15 +417,22 @@ export default function LandingPage() {
                                     Launch Bot Instance
                                 </Link>
                             </Button>
+                            <div className="mt-8 flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-md">
+                                <span className="relative flex h-2 w-2">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                                </span>
+                                <span className="text-xs font-mono text-primary uppercase tracking-wider">Limited Offer: Free 1 Month for First 100 Users</span>
+                            </div>
                         </motion.div>
                     </div>
 
                     <div className="absolute inset-0 bg-primary/20 blur-[150px] rounded-full pointer-events-none -z-10 animate-pulse" />
                     <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,var(--color-primary)_0%,transparent_70%)] opacity-20 -z-20" />
-                </section >
+                </section>
 
-            </main >
+            </main>
             <Footer />
-        </div >
+        </div>
     )
 }

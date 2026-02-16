@@ -21,25 +21,25 @@ export function Navbar() {
     }
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-md" suppressHydrationWarning>
+        <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-background/90 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60" suppressHydrationWarning>
             <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
                 <Link href="/" className="flex items-center gap-2 font-bold text-xl tracking-tight group">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.03] border border-white/10 backdrop-blur-xl group-hover:scale-110 transition-transform overflow-hidden relative">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 border border-primary/20 text-primary group-hover:scale-105 transition-transform overflow-hidden relative">
                         <LogoRenderer />
                     </div>
-                    <span>SentraX-AI</span>
+                    <span className="font-mono tracking-tighter">SentraX<span className="text-primary">.AI</span></span>
                 </Link>
 
                 <div className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
-                    <Link href="#features" onClick={(e) => handleSmoothScroll(e, 'features')} className="hover:text-foreground transition-colors underline-offset-4 hover:underline">Features</Link>
-                    <Link href="#reports" onClick={(e) => handleSmoothScroll(e, 'reports')} className="hover:text-foreground transition-colors underline-offset-4 hover:underline">Reports</Link>
-                    <Link href="#performance" onClick={(e) => handleSmoothScroll(e, 'performance')} className="hover:text-foreground transition-colors underline-offset-4 hover:underline">Performance</Link>
-                    <Link href="#roadmap" onClick={(e) => handleSmoothScroll(e, 'roadmap')} className="hover:text-foreground transition-colors underline-offset-4 hover:underline">Roadmap</Link>
+                    <Link href="#features" onClick={(e) => handleSmoothScroll(e, 'features')} className="hover:text-primary transition-colors hover:drop-shadow-glow">Features</Link>
+                    <Link href="#reports" onClick={(e) => handleSmoothScroll(e, 'reports')} className="hover:text-primary transition-colors hover:drop-shadow-glow">Reports</Link>
+                    <Link href="#performance" onClick={(e) => handleSmoothScroll(e, 'performance')} className="hover:text-primary transition-colors hover:drop-shadow-glow">Performance</Link>
+                    <Link href="#roadmap" onClick={(e) => handleSmoothScroll(e, 'roadmap')} className="hover:text-primary transition-colors hover:drop-shadow-glow">Roadmap</Link>
                 </div>
 
                 <div className="flex items-center gap-4">
                     {/* Mobile menu trigger could go here */}
-                    <Button asChild size="sm" className="hidden sm:inline-flex rounded-full">
+                    <Button asChild size="sm" className="hidden sm:inline-flex rounded-full font-semibold shadow-[0_0_10px_rgba(0,230,153,0.3)]">
                         <Link href="https://t.me/sentrax_ai_bot" target="_blank">
                             Get Started
                         </Link>
